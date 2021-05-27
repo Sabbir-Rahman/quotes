@@ -5,6 +5,10 @@ const cors = require('cors')
 
 const app = express();
 
+const postRoutes = require('./routes/posts')
+
+//setting up the routes
+app.use('/posts',postRoutes)
 
 //for parsing the data 
 app.use(bodyParser.json({ limit: "30mb", extended: true}))
