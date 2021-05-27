@@ -3,11 +3,12 @@ const express = require('express')
 const router = express.Router();
 
 const {
-    getPost
-} = require('../controllers/posts')
+    getPost,createPost
+} = require('../controllers/posts.js')
 
 
-router.get('/', getPost)
+router.get('/view', getPost)
+router.post('/create', createPost)
 
 module.exports = router
 
