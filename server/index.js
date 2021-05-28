@@ -1,20 +1,21 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const mongoose = require('mongoose')
-const cors = require('cors')
+import express from 'express';
+import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
+import cors from 'cors';
 
 const app = express();
 app.use(cors())
 
-const postRoutes = require('./routes/posts')
+import postRoutes from './routes/posts.js';
 
-//setting up the routes
-app.use('/posts',postRoutes)
 
 //for parsing the data 
 app.use(bodyParser.json({ limit: "30mb", extended: true}))
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true}))
+app.use(cors())
 
+//setting up the routes
+app.use('/posts',postRoutes)
 
 const CONNECTION_URL = 'mongodb+srv://sabbir:sabbir@cluster0.mmfp5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 const PORT = process.env.PORT || 5000
