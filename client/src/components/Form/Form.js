@@ -17,7 +17,7 @@ const Form = ({ currentId, setCurrentId }) => {
         selectedFile: ''
     })
 
-    const post = useSelector((state) => currentId? state.posts.find((p) => p._id === currentId):null)
+    const post = useSelector((state) => currentId? state.posts.find((message) => message._id === currentId):null)
 
 
     const classes = userStyles()
@@ -31,14 +31,17 @@ const Form = ({ currentId, setCurrentId }) => {
         event.preventDefault()
 
         if(currentId){
-            dispatch(updatePost(currentId, postdata))
+            
+            dispatch(updatePost(currentId, postdata)) 
             
         } else {
-            dispatch(createPost(postdata))
-            
+           
+           dispatch(createPost(postdata))
         }
 
         clear()
+
+        
 
         
         
