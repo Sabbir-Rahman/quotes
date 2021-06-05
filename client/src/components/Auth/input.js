@@ -19,7 +19,7 @@ const Input = ({name,handleChange,label, half, autoFocus, type, handleShowPasswo
                 type={type}
 
                 //only if name === password there is function for make it visible
-                InputProps={name === 'password' && {
+                InputProps={name === 'password' ? {
                     endAdornment: (
                         <InputAdornment position="end" >
                             <IconButton onClick={handleShowPassword}>
@@ -27,7 +27,7 @@ const Input = ({name,handleChange,label, half, autoFocus, type, handleShowPasswo
                             </IconButton>
                         </InputAdornment>
                     )
-                } }
+                }: null }
             
             
 
