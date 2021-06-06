@@ -7,7 +7,9 @@ import { useHistory } from 'react-router-dom'
 import Icon from './icon'
 import useStyles from './styles'
 import Input from './input'
+import { signin, signup } from '../../actions/auth'
 
+const initialState = { firstName: "",lastname:"",email:"", password: "",confirmPassword: ""}
 
 const Auth = () => {
     const classes = useStyles();  
@@ -18,16 +20,25 @@ const Auth = () => {
     const handleShowPassword = () => setShowPassowrd((prevShowPassword) => !prevShowPassword)
 
     const [isSignUp,setIsSignup] = useState(false)
+    const [formData, setFormData ] = useState(initialState)
     const dispatch = useDispatch()
 
     const history = useHistory()
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        if(isSignUp) {
+            dispatch(signup(formData, history))
+        }else {
+            dispatch(signup(formData, history))
+        }
 
     }
 
-    const handleChange = () => {
-
+    const handleChange = (e) => {
+        //which input value will will change only that will affect 
+        setFormData({...formData, [e.target.name]: e.target.value})
     }
 
     const switchMode = () => {
