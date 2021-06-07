@@ -9,7 +9,7 @@ import useStyles from './styles'
 import Input from './input'
 import { signin, signup } from '../../actions/auth'
 
-const initialState = { firstName: "",lastname:"",email:"", password: "",confirmPassword: ""}
+const initialState = { firstName: "",lastName:"",email:"", password: "",confirmPassword: ""}
 
 const Auth = () => {
     const classes = useStyles();  
@@ -27,11 +27,11 @@ const Auth = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
+       
         if(isSignUp) {
             dispatch(signup(formData, history))
         }else {
-            dispatch(signup(formData, history))
+            dispatch(signin(formData, history))
         }
 
     }
@@ -43,7 +43,7 @@ const Auth = () => {
 
     const switchMode = () => {
         setIsSignup((prevIsSignUp) => !prevIsSignUp)
-        handleShowPassword(false)
+        setShowPassowrd(false)
     }
 
     const googleSuccess = async (res) => {

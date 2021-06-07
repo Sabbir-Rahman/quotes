@@ -1,4 +1,4 @@
-import mongoose, { mongo } from 'mongoose'
+import mongoose  from 'mongoose'
 
 //this is for replicating required
 const requiredString = {
@@ -10,7 +10,7 @@ const userSchema = mongoose.Schema({
     name: requiredString,
     email: requiredString,
     password: requiredString,
-    id: requiredString
+    id: {type: String}
 })
 
 export default mongoose.model("User", userSchema)

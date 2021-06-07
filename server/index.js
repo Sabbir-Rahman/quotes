@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv'
 import postRoutes from './routes/posts.js';
-import userRoutes from '/routes/users.js'
+import userRoutes from './routes/users.js'
 
 const app = express();
 dotenv.config()
@@ -17,14 +17,14 @@ app.use(cors())
 
 //setting up the routes
 app.use('/posts',postRoutes)
-app.use('/user', userRoutes)
+app.use('/users', userRoutes)
 
 app.get('/', (req,res) => {
     res.send('Hello to Memories API')
 })
 
 // const CONNECTION_URL = 'mongodb+srv://sabbir:sabbir@cluster0.mmfp5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-const CONNECTION_URL = process.env.CONNECTION_URL
+const CONNECTION_URL = 'mongodb+srv://sabbir:sabbir@cluster0.mmfp5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 const PORT = process.env.PORT 
 
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true})
