@@ -59,11 +59,28 @@ export const deletePost = async (req, res) => {
 export const likePost = async(req, res) => {
     const { id } = req.params
 
+    //as we call a middleware auth we will get req.userId
+    if(!req.userId) return res.json({ message: 'Unauthenticated'})
+
+
     if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No post with that id')
 
     const post = await PostMessage.findById(id)
 
-    const updatedPost = await PostMessage.findByIdAndUpdate(id, { likeCount: post.likeCount +1 }, { new: true})
+    //if user id already on the post or not
+    const index = post.likes.findIndex((id) => id === String(req.userId))
+
+    if(index === -1){
+        //it means id not in the post so can like the post
+        //push the id in the liked list of the post
+        post.likes.push(req.userId)
+    } else {
+        //will return the like list without the present user id
+        post.likes = post.likes.filter((id) => id !== String(req.userId))
+    }
+
+    //just update the post
+    const updatedPost = await PostMessage.findByIdAndUpdate(id, post, { new: true})
 
     res.json(updatedPost)
 }
