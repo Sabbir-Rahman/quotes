@@ -26,7 +26,7 @@ const Navbar = () => {
         if(token){
             const decodedToken = decode(token)
 
-            if(decodedToken.exp * 1000 < new Date().getItem()) logout()
+            if(decodedToken.exp * 1000 < new Date().getTime()) logout()
         }
 
         setuser(JSON.parse(localStorage.getItem('profile')))
