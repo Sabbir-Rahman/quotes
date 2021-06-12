@@ -4,14 +4,16 @@ import { useSelector } from 'react-redux'
 import Post from './Post/Post'
 import useStyles from './styles'
 const Posts = ({ setCurrentId }) => {
-    const {posts} = useSelector((state) => state.posts)
+    const {posts, isLoading} = useSelector((state) => state.posts)
     console.log('Posts')
     console.log(posts)
     const classes = useStyles()
+
+    if(!posts.length && !isLoading) return 'No Posts'
     
     return(
         //if post.length is greater than 0 then it will show the grid otherwise cuircular progress
-        !posts?.length ? <CircularProgress /> : (
+        isLoading ? <CircularProgress /> : (
             
             //not decond bracket
             <Grid className={classes.container} container alignItems="stretch" spacing={3}>
