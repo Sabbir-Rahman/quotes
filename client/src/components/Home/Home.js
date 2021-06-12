@@ -32,7 +32,7 @@ const Home = () => {
     }, [currentId,dispatch]);
 
     const searchPost = ()=> {
-        if(search.trim()){
+        if(search.trim() || tags){
             dispatch(getPostBySearch({ search, tags: tags.join(',')}))
 
 

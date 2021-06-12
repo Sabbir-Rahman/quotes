@@ -15,7 +15,7 @@ import * as api from '../api/index.js'
 
 export const getPostBySearch = (searchQuery) => async (dispatch) =>{
     try {
-        const { data } = await api.fetchPostsBySearch(searchQuery)
+        const { data: {data} } = await api.fetchPostBySearch(searchQuery)
 
         console.log(data)
     } catch (error) {
@@ -41,12 +41,13 @@ export const createPost = (post) => async (dispatch) => {
 export const updatePost = (id, post) => async (dispatch) => {
     try {
         const { data } = await api.updatePost(id,post)
-
+        
         dispatch({ type: UPDATE, payload: data})
     } catch (error) {
+        
         console.log(error)
     }
-
+    
     window.location.reload();
 }
 

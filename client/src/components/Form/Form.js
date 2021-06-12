@@ -32,7 +32,8 @@ const Form = ({ currentId, setCurrentId }) => {
 
         if(currentId){
             
-            dispatch(updatePost({...postdata,name: user?.result?.name}))
+           
+            dispatch(updatePost(currentId,{...postdata,name: user?.result?.name}))
             
             clear()
             
