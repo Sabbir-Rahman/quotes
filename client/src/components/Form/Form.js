@@ -16,8 +16,7 @@ const Form = ({ currentId, setCurrentId }) => {
         selectedFile: ''
     })
 
-    const post = useSelector((state) => currentId? state.posts.find((message) => message._id === currentId):null)
-
+    const post = useSelector((state) => (currentId ? state.posts.posts.find((message) => message._id === currentId) : null));
 
     const classes = userStyles()
     const user = JSON.parse(localStorage.getItem('profile'))
@@ -78,7 +77,7 @@ const Form = ({ currentId, setCurrentId }) => {
                 <TextField 
                     name="title" 
                     variant="outlined" 
-                    label="Title" 
+                    label="Quote Author" 
                     fullWidth
                     value={postdata.title}
                     onChange={(event) => setPostData({ ...postdata,title: event.target.value })}
@@ -86,7 +85,7 @@ const Form = ({ currentId, setCurrentId }) => {
                 <TextField 
                     name="message" 
                     variant="outlined" 
-                    label="Message" 
+                    label="Favourite Quote" 
                     fullWidth
                     value={postdata.message}
                     onChange={(event) => setPostData({ ...postdata,message: event.target.value })}

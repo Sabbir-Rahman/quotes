@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import { AppBar, Avatar, Button, Toolbar, Typography } from '@material-ui/core'
 import useStyles from './styles'
-import memoriesImg from '../../images/memories.png'
+import quotesImg from '../../images/quotes.png'
 import { useDispatch } from 'react-redux'
 import decode from 'jwt-decode'
 
@@ -34,10 +34,10 @@ const Navbar = () => {
 
     return(
         <AppBar className={classes.appBar} position="static" color="inherit">
-                <Link to="/" className={classes.brandContainer}>
-                    <Typography component={Link} to="/" className={classes.heading} variant="h3" align="center">Memories</Typography>
-                    <img className={classes.image} src={memoriesImg} alt="memoriesimg" height="50"/>
-                </Link>
+                <div to="/" className={classes.brandContainer}>
+                    <Typography component={Link} to="/" className={classes.heading} variant="h4" align="center">Quotes</Typography>
+                    <img className={classes.image} src={quotesImg} alt="quotes img" height="40"/>
+                </div>
                 <Toolbar className={classes.toolbar}>
                     {user?.result?  (
                         <div className={classes.profile}>

@@ -39,7 +39,7 @@ const Post = ({ post, setCurrentId }) => {
                 <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
             </div>
 
-            {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
+            {((user?.result?.googleId === post?.creator || user?.result._id === post?.creator)&& localStorage.getItem('profile')) && (
             <div className={classes.overlay2}>
                 <Button style={{color: 'white'}} size="small" onClick={()=> setCurrentId(post._id)}>
                     <MoreHorizIcon fontSize="default"/>
@@ -60,8 +60,8 @@ const Post = ({ post, setCurrentId }) => {
                 </Button>
 
                 
-                {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
-                    <Button size="small" color="primary" onClick={() => dispatch(deletePost(post._id))}>
+                {((user?.result?.googleId === post?.creator || user?.result._id === post?.creator)&& localStorage.getItem('profile')) && (
+                <Button size="small" color="primary" onClick={() => dispatch(deletePost(post._id))}>
                     <DeleteIcon fontSize="small"/>
                     Delete
                 </Button>
